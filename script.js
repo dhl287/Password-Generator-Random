@@ -13,7 +13,8 @@ function generatePassword() {
   while (confirmLength <= 8 || confirmLength >= 128) {
     alert("Your password length needs to be between 8-128 characters. Click 'Generate Password' and try again.");
     var confirmLenth = (prompt("How many characters would you like to use in your password?"));
-    alert("Your password will have the correct number of characters.")
+    alert("Your password will have the correct number of characters.");
+    continue;
   }
 
 var confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters.");
@@ -48,15 +49,22 @@ while(confirmSymbol === false) {
   // 2. validate input, at least one character type is selected
   // 3. show generated password
 
-if (upperCase) {multiSelect += upperCase}
-if (lowerCase) {multiSelect += lowerCase};
-if (number) {multiSelect += number};
-if (symbol) {multiSelect += symbol};
+  var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+  var number = "0123456789";
+  var symbol = "!@#$%^&*()-_=+";
 
-  let randomPassword = ""
+var passwordCharacters = {
+  upperCase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  lowerCase: "abcdefghijklmnopqrstuvwxyz",
+  number: "0123456789",
+  symbol: "!@#$%^&*()-_=+"
+}
+
+  let randomPassword = "";
       
-  for (const i = 0; i < confirmLength; i++) {
-    randomPassword = randomPassword + passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+  for (var i = 0; i < confirmLength; i++) {
+    randomPassword = passwordCharacters[Math.floor(Math.random() * passwordCharacters.confirmLength)];
     console.log(randomPassword)
   }
   return randomPassword;
