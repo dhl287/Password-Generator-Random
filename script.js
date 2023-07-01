@@ -6,12 +6,12 @@ var lowerCase = "abcdefghijklmnopqrstuvwxyz";
 var number = "0123456789";
 var symbol = "!@#$%^&*()-_=+";
 
-const confirmLength = "";
+var confirmLength = "";
 
 function generatePassword() {
   var confirmLength = (prompt("How many charaters would you like to use in your password?"));
   while (confirmLength <= 8 || confirmLength >= 128) {
-    alert("Your password length needs to be between 8-128 characters. Click 'Generate Password' again.");
+    alert("Your password length needs to be between 8-128 characters. Click 'Generate Password' and try again.");
     var confirmLenth = (prompt("How many characters would you like to use in your password?"));
     alert("Your password will have the correct number of characters.")
   }
@@ -21,14 +21,26 @@ var confirmLowerCase = confirm("Click OK to confirm if you would like to include
 var confirmNumber = confirm("Click OK to confirm if you would like to include numbers.");
 var confirmSymbol = confirm("Click OK to confirm if you would like to include symbols.");
 
-while(confirmUpperCase === false && confirmLowerCase === false && confirmNumber === false && confirmSymbol === false) {
-  alert("You must click OK for each type of character to continue.")
+while(confirmUpperCase === false) {
+  alert("You must click OK and add uppercase characters to continue.")
   var confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters.");
-  var confirmLowerCase = confirm("Click OK to confirm if you would like to include lowercase characters.");
-  var confirmNumber = confirm("Click OK to confirm if you would like to include numbers.");
-  var confirmSymbol = confirm("Click OK to confirm if you would like to include symbols.");
-
 }
+
+while(confirmLowerCase === false) {
+  alert("You must click OK and add lowercase characters to continue.")
+  var confirmLowerCase = confirm("Click OK to confirm if you would like to include lowercase characters.");
+}
+
+while(confirmNumber === false) {
+  alert("You must click OK and add numbers to continue.")
+  var confirmNumber = confirm("Click OK to confirm if you would like to include numbers.");
+}
+
+while(confirmSymbol === false) {
+  alert("You must click OK and add symbols to continue.")
+  var confirmSymbol = confirm("Click OK to confirm if you would like to include symbols.");
+}
+
 
   // 1. need to create prompts (prompt the user)
   //  a. password length (8 - 128 characters)
@@ -36,10 +48,15 @@ while(confirmUpperCase === false && confirmLowerCase === false && confirmNumber 
   // 2. validate input, at least one character type is selected
   // 3. show generated password
 
-  var randomPassword = ""
+if (upperCase) {multiSelect += upperCase}
+if (lowerCase) {multiSelect += lowerCase};
+if (number) {multiSelect += number};
+if (symbol) {multiSelect += symbol};
+
+  let randomPassword = ""
       
-  for (var i = 0; i < confirmLength; i++) {
-    randomPassword = randomPassword + characters[Math.floor(Math.random() * characters.length)];
+  for (const i = 0; i < confirmLength; i++) {
+    randomPassword = randomPassword + passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
     console.log(randomPassword)
   }
   return randomPassword;
