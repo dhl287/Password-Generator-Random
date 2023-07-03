@@ -1,75 +1,70 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
-
-var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var lowerCase = "abcdefghijklmnopqrstuvwxyz";
-var number = "0123456789";
-var symbol = "!@#$%^&*()-_=+";
-
-var confirmLength = "";
-
-function generatePassword() {
-  var confirmLength = prompt("How many charaters would you like to use in your password?");
-  while (confirmLength <= 8 || confirmLength >= 128) {
-    alert("Your password length needs to be between 8-128 characters. Click 'Generate Password' and try again.");
-    var confirmLenth = (prompt("How many characters would you like to use in your password?"));
-    alert("Your password will have the correct number of characters.");
-  }
-
-var confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters.");
-var confirmLowerCase = confirm("Click OK to confirm if you would like to include lowercase characters.");
-var confirmNumber = confirm("Click OK to confirm if you would like to include numbers.");
-var confirmSymbol = confirm("Click OK to confirm if you would like to include symbols.");
-
-
-while(confirmUpperCase === false) {
-  alert("You must click OK and add lowercase characters to continue.")
-  var confirmUpperCase = confirm("Click OK to confirm if you would like to include lowercase characters.");
-}
-
-while(confirmLowerCase === false) {
-  alert("You must click OK and add lowercase characters to continue.")
-  var confirmLowerCase = confirm("Click OK to confirm if you would like to include lowercase characters.");
-}
-
-while(confirmNumber === false) {
-  alert("You must click OK and add numbers to continue.")
-  var confirmNumber = confirm("Click OK to confirm if you would like to include numbers.");
-}
-
-while(confirmSymbol === false) {
-  alert("You must click OK and add symbols to continue.")
-  var confirmSymbol = confirm("Click OK to confirm if you would like to include symbols.");
-}
-
-
   // 1. need to create prompts (prompt the user)
   //  a. password length (8 - 128 characters)
   //  b. lowercase, uppercase, number, symbol
   // 2. validate input, at least one character type is selected
   // 3. show generated password
 
-
-}
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  for (var i = 0; i < confirmLength; i++) {
-    var randomPassword = allChars[Math.floor(Math.random() * allChars.confirmLength)];
-    console.log(randomPassword);
-    
-    return randomPassword;
-    }
-    
-
-  passwordText.value = password;
-
-}
+// Assignment Code
+var generateBtn = document.querySelector("#generate");
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+// Write password to the #password input
+function writePassword() {
+  var truePrompts = createPrompts();
+  var passwordText = document.querySelector("#password");
 
+  if(truePrompts) {
+  var newPassword = generatePassword();
+  passwordText.value = newPassword;
+  } else {
+    passwordText.value = "";
+  }
+}
+  
+function generatePassword() {
+  var password = "";
+  for(var i = 0; i < confirmLength; i++) {
+    var randomPassword = Math.floor(Math.random() * choice.length);
+    password = password + choice[randomPassword];
+  }
+  return password;
+}
+
+var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var symbol = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+"];
+
+var confirmLength = "";
+var choice = [];
+
+// generate password based on prompt, created new function to create prompts
+
+function createPrompts() {
+  choice = [];
+  confirmLength = parseInt(prompt("How many characters would you like to use in your password?"));
+
+  if(isNaN(confirmLength) || confirmLength < 8 || confirmLength > 128) {
+    alert("You need to add a number from 8-128.");
+    return false;
+  }
+
+  if(confirm("Click OK if you would like to add uppercase characters.")) {
+    choice = choice.concat(upperCase);
+  }
+
+  if(confirm("Click OK if you would like to add lowercase characters.")) {
+    choice = choice.concat(lowerCase);
+  }
+
+  if(confirm("Click OK if you would like to add numbers.")) {
+    choice = choice.concat(number);
+  }
+
+  if(confirm("Click OK if you would like to add symbols.")) {
+    choice = choice.concat(symbol);
+  }
+return true;
+}
