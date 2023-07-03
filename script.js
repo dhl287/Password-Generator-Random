@@ -16,8 +16,8 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   if(truePrompts) {
-  var newPassword = generatePassword();
-  passwordText.value = newPassword;
+  var password = generatePassword();
+  passwordText.value = password;
   } else {
     passwordText.value = "";
   }
