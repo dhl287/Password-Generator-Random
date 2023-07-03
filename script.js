@@ -28,6 +28,7 @@ function generatePassword() {
   for(var i = 0; i < confirmLength; i++) {
     var randomPassword = Math.floor(Math.random() * choice.length);
     password = password + choice[randomPassword];
+    console.log("The system will generate the password.")
   }
   return password;
 }
@@ -48,6 +49,7 @@ function createPrompts() {
 
   if(isNaN(confirmLength) || confirmLength < 8 || confirmLength > 128) {
     alert("You need to add a number from 8-128.");
+    console.log("Not enough characters.")
     return false;
   }
 
