@@ -55,18 +55,35 @@ function createPrompts() {
 
   if(confirm("Click OK if you would like to add uppercase characters.")) {
     choice = choice.concat(upperCase);
+  } else {
+    alert("You need to choose an uppercase character.");
+    console.log("Need to add uppercase characters.")
+    return false;
   }
 
   if(confirm("Click OK if you would like to add lowercase characters.")) {
     choice = choice.concat(lowerCase);
+  } else {
+    alert("You need to choose a lowercase character.");
+    console.log("Need to add lowercase characters.")
+    return false;
   }
 
   if(confirm("Click OK if you would like to add numbers.")) {
     choice = choice.concat(number);
+  } else {
+    alert("You need to choose a number.");
+    console.log("Need to add numbers.")
+    return false;
   }
 
   if(confirm("Click OK if you would like to add symbols.")) {
     choice = choice.concat(symbol);
+  } else {
+    alert("You need to choose a symbol.");
+    console.log("Need to add symbols.")
+    return false;
   }
+
 return true;
 }
