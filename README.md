@@ -34,6 +34,7 @@ I would like to credit the following sources for study materials in adding the J
 * [mdn web docs_parseInt()] (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt)
 * [mdn web docs_Array.prototype.concat()] (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)
 * [Homework Startup Guide] (https://www.youtube.com/watch?v=x4HUaiazDes&ab_channel=PaulKeldsen-WebDevelopment)
+* [Random Password Generator in JavaScript - Reference] (https://www.youtube.com/watch?v=v2jfGo7ztm8&ab_channel=DanielVega)
 
 ## License
 

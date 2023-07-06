@@ -12,7 +12,7 @@ generateBtn.addEventListener("click", writePassword);
 
 // Write password to the #password input
 function writePassword() {
-  var truePrompts = createPrompts();
+  var truePrompts = createPrompts(true);
   var passwordText = document.querySelector("#password");
 
   if(truePrompts) {
@@ -47,7 +47,7 @@ function createPrompts() {
   choice = [];
   confirmLength = parseInt(prompt("How many characters would you like to use in your password?"));
 
-  if(isNaN(confirmLength) || confirmLength < 8 || confirmLength > 128) {
+  if(confirmLength < 8 || confirmLength > 128) {
     alert("You need to add a number from 8-128.");
     console.log("Not enough characters.")
     return false;
